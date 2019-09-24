@@ -1,0 +1,55 @@
+ <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light headroom--top headroom--pinned">
+    <div class="container align-items-right">
+      <a class="navbar-brand mr-lg-5" [routerLink]="['/home']">
+         <img src="../../../assets/img/brand/logo.png"> 
+      </a>
+      <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed"
+            [attr.aria-expanded]="!isCollapsed" aria-controls="navbar_global">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-collapse collapse" id="navbar_global" [ngbCollapse]="isCollapsed">
+        <div class="navbar-collapse-header">
+          <div class="row">
+            <div class="col-6 collapse-brand">
+              <a [routerLink]="['/home']">
+                <!-- <img src="./assets/img/brand/logo.png"> -->
+              </a>
+            </div>
+            <div class="col-6 collapse-close">
+              <button type="button" class="navbar-toggler" (click)="isCollapsed = !isCollapsed"
+                    [attr.aria-expanded]="!isCollapsed" aria-controls="navbar_global">
+                <span></span>
+                <span></span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+           <!-- <img src="./assets/img/brand/logo.png" height="80px" >  -->
+          <li class="nav-item dropdown">
+            <div class="dropdown-menu-xl dropdown-menu" >
+              <div class="dropdown-menu-inner">
+              </div>
+            </div>
+          </li>
+        </ul>
+
+        <div class="input-group md-form form-sm form-1 pl-0">
+            <div class="input-group-prepend">
+              </div>
+            <input name="title" class="form-control my-0 py-1" type="text" placeholder="Search for ideas" aria-label="Search" #searchBar>
+            <button (click)=searchLogs(searchBar.value)>Search</button>
+          </div>
+        <ul class="navbar-nav align-items-lg-center ml-lg-auto">
+            <a  [routerLink]="['/login']" class="btn btn-neutral btn-icon">
+              <span class="btn-inner--icon">
+              </span>
+              <a [routerLink]="['/login']" class="nav-link-inner--text" >Login</a>
+            </a>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+  
+

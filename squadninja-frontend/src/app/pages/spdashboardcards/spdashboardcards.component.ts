@@ -1,9 +1,11 @@
+import { map } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
 import { SectionComponentService } from 'src/app/services/cardHomePage/section-component.service';
 import { SectionComponentSP } from 'src/app/services/cardSPHomePage/section-component-service-service';
 import { HttpClient } from '@angular/common/http';
 import { FormControl } from '@angular/forms';
 import { SpprofileserService } from 'src/app/services/spprofileser/spprofileser.service';
+import { IdeaviewService } from 'src/app/services/ideaviewser/ideaview.service';
 
 @Component({
   selector: 'app-spdashboardcards',
@@ -27,10 +29,12 @@ private_url:string="http://13.235.10.115:8083/api/v1/appliedTeam";
 
 
   dialog: any;
+  joined: any;
+  rejected: any;
   
 
 
-  constructor(private sectionComponentService : SectionComponentService ,private spprofileserService : SpprofileserService,private serviceProviderProfile: SpprofileserService){}
+  constructor(private sectionComponentService : SectionComponentService ,private spprofileserService : SpprofileserService,private serviceProviderProfile : SpprofileserService,private ideaviewService : IdeaviewService){}
   ngOnInit() {
 
     this.emailId=localStorage.getItem("emailId");
@@ -123,10 +127,31 @@ private_url:string="http://13.235.10.115:8083/api/v1/appliedTeam";
   }
 
   accept(cardnumber){
-    
+    console.log(cardnumber);
+    console.log(this.serviceProviderData.invitedIdeas[cardnumber].title);
+    let title = this.serviceProviderData.invitedIdeas[cardnumber].title;
+
+    console.log(String(title));
+    let joined: boolean =true;
+    this.ideaviewService.joinedAfterInvite(String(title),this.emailId,joined)
+    .subscribe((data)=> {
+      this.joined=data;
+      console.log("after getting back from service",this.joined);
+    });
+    this.serviceProviderData.invitedIdeas.splice(cardnumber,1);
   }
 
   reject(cardnumber){
-
+    console.log(cardnumber);
+    this.serviceProviderData.invitedIdeas.splice(cardnumber,1);
+    console.log(this.serviceProviderData.invitedIdeas[cardnumber].title);
+    let title = this.serviceProviderData.invitedIdeas[cardnumber].title;
+    console.log(String(title));
+    let joined: boolean =false; 
+    this.ideaviewService.joinedAfterInvite(title,this.emailId,joined)
+    .subscribe((data)=> {
+      this.rejected=data;
+      console.log("after getting back from service",this.rejected);
+    });
   }
 }

@@ -70,7 +70,7 @@
         <div class="row">
             <div style="min-height: 100px"
             class="col-sm-3"
-            *ngFor="let y of serviceProviderData; let index = index"
+            *ngFor="let y of serviceProviderData.invitedIdeas; let index = index"
           >
             <button
               (click)="clicked(index)"
@@ -84,22 +84,22 @@
             <p>{{ y?.title }}</p>
           </div>
         </div>
-        <!-- <div class="modal fade" id="myModalIdea" role="dialog">
+        <div class="modal fade" id="myModalIdea" role="dialog">
           <div class="modal-dialog modal-lg">
             <div class="modal-content">
               <div class="modal-header">
                 <h4 class="modal-title">
-                  {{ serviceProviderData[cardNumber]?.title }}
+                  {{ serviceProviderData.invitedIdeas[cardNumber]?.title }}
                 </h4>
                 <button type="button" class="close" data-dismiss="modal">
                     &times;
                   </button>
               </div>
               <div class="modal-body">
-                <p>{{ serviceProviderData[cardNumber]?.description }}</p>
+                <p>{{ serviceProviderData.invitedIdeas[cardNumber]?.description }}</p>
               </div>
               <div class="modal-body">
-                  <p>{{ serviceProviderData[cardNumber]?.cost}}</p>
+                  <p>{{ serviceProviderData.invitedIdeas[cardNumber]?.cost}}</p>
                 </div>
               <div class="modal-footer">
                 <button type="button"  class="btn btn-default" data-dismiss="modal" (click)="accept(cardNumber)">
@@ -111,7 +111,7 @@
               </div>
             </div>
           </div>
-        </div> -->
+        </div>
       </div>
     </div>
   </div>

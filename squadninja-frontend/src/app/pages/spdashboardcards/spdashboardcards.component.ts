@@ -56,6 +56,8 @@ private_url:string="http://13.235.10.115:8083/api/v1/appliedTeam";
     // console.log(this.ideaCardsData);
 
 
+    
+
   }
 
 
@@ -71,10 +73,11 @@ private_url:string="http://13.235.10.115:8083/api/v1/appliedTeam";
   getTheProfile(){
     this.serviceProviderProfile.getByEmailIdForServiceProvider(this.emailId)
     .subscribe((data)=> {
-      // console.log("data fetched..", data);
+      console.log("data fetched..", data);
       this.serviceProviderData=data;
-      // console.log("after getting back from service",this.serviceProviderData);
+      console.log("after getting back from service",this.serviceProviderData);
     });
+
   }
 
   apply(cardNumber){

@@ -71,7 +71,7 @@ Login() {
           this.router.navigate(['/ihdashboard']);
         }
          else {
-          this.router.navigate(['/spdashboard']);
+          this.router.navigate(['/spdashboard/user-profile']);
           
           
         }
